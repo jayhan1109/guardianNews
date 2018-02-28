@@ -1,24 +1,43 @@
 package com.example.android.guardiannews.NewsClass;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by jungh on 2/26/2018.
  */
 
 public class News {
 
+    private int mNumber;
     private String mHead;
     private String mSectonName;
-    private String mType;
+    private String mDate;
 
-    public News(String mHead, String mSectonName, String mType) {
+    private String mUrl;
+
+    public News(int mNumber, String mHead, String mSectonName, String mDate, String mUrl) {
         this.mHead = mHead;
         this.mSectonName = mSectonName;
-        this.mType = mType;
+        this.mNumber = mNumber;
+
+        String tmp = mDate.replace(mDate.substring(mDate.indexOf('T'), mDate.length()), "");
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tmp);
+            tmp = new SimpleDateFormat("MMM dd", Locale.US).format(date);
+            this.mDate = tmp;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        this.mUrl = mUrl;
     }
 
-    public News(String mHead, String mSectonName) {
-        this.mHead = mHead;
-        this.mSectonName = mSectonName;
+    public int getmNumber() {
+        return mNumber;
     }
 
     public String getmHead() {
@@ -29,7 +48,12 @@ public class News {
         return mSectonName;
     }
 
-    public String getmType() {
-        return mType;
+    public String getmDate() {
+
+        return mDate;
+    }
+
+    public String getmUrl() {
+        return mUrl;
     }
 }

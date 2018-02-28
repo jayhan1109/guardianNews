@@ -89,6 +89,7 @@ public class GetNews {
 
         List<News> news=new ArrayList<>();
 
+        int number=0;
         try {
             JSONObject jsonObject=new JSONObject(str);
             JSONObject response=jsonObject.getJSONObject("response");
@@ -96,8 +97,9 @@ public class GetNews {
             for(int i=0;i<response.length();i++){
                 String title=results.getJSONObject(i).getString("webTitle");
                 String sectionName=results.getJSONObject(i).getString("sectionName");
-                String type=results.getJSONObject(i).getString("type");
-                news.add(new News(title,sectionName,type));
+                String webPublicationDate=results.getJSONObject(i).getString("webPublicationDate");
+                String webUrl=results.getJSONObject(i).getString("webUrl");
+                news.add(new News(++number,title,sectionName,webPublicationDate,webUrl));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG,"error with create jsonObject",e);

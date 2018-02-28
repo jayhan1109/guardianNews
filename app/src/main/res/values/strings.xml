@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">GuardianNews</string>
+    <string name="app_name">GguardianNews</string>
+    <string-array name="news_category">
+        <item>World</item>
+        <item>Politics</item>
+        <item>Cities</item>
+        <item>Football</item>
+        <item>Music</item>
+        <item>Culture</item>
+        <item>Fashion</item>
+        <item>Games</item>
+    </string-array>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="no_news">Cannot Find News</string>
 </resources>
